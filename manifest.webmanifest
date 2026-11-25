@@ -1,0 +1,8 @@
+{
+  "name": "Defterim Gerçekçi Dijital Defter",
+  "short_name": "Defterim",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#e7dfd2",
+  "theme_color": "#574735"
+}

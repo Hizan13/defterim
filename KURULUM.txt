@@ -1,0 +1,11 @@
+DEFTERİM – GERÇEKÇİ TASARIM PROTOTİPİ
+
+- Ayrı bir kapak ekranı ve açılan defter içi
+- İki sayfalı açık defter görünümü, orta cilt/girinti ve kâğıt gölgesi
+- Sonraki/önceki sayfa animasyonu
+- Çizgili, boş ve kareli sayfa
+- Birden fazla defter ve otomatik yerel kayıt
+
+iPhone kurulumu: Bu dosyaları HTTPS destekleyen bir web barındırma alanına yükleyin, bağlantıyı Safari'de açın, Paylaş > Ana Ekrana Ekle'yi seçin.
+
+Bu sürüm App Store IPA dosyası değildir. Notlar cihazdaki tarayıcı depolamasında tutulur; tarayıcı verileri silinirse kaybolabilir. Bulut yedekleme, fotoğraf yükleme ve gerçek fiziksel sayfa kıvırma fiziği henüz yoktur; sayfa dönüşü animasyonu görsel bir simülasyondur.
