@@ -3,200 +3,137 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#463b2e">
+<meta name="theme-color" content="#33271f">
 <link rel="manifest" href="manifest.webmanifest">
 <title>Defterim</title>
 <style>
-:root{--ink:#30291f;--muted:#82796d;--wood:#574735;--paper:#fffaf0}
+:root{--ink:#30271f;--muted:#817365;--wood:#574432;--paper:#fffaf0;--line:#d9d1c4;--gold:#c6a66b}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#f4efe6,#d9d0c3 75%);font-family:Georgia,"Times New Roman",serif;color:var(--ink);min-height:100vh}
-header{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#f8f4eddd;border-bottom:1px solid #c9beae;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
-header strong{font-size:19px;letter-spacing:.4px}
-button{font:inherit;border:0;cursor:pointer}
-.btn{background:#63513c;color:#fff;border-radius:22px;padding:10px 15px;box-shadow:0 3px 8px #382b1e35}
-.btn.light{background:#e8dfd1;color:#4b4033;box-shadow:none}
-main{max-width:850px;margin:auto;padding:20px 14px 115px}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at 50% 0,#f6f0e6 0,#ddd2c2 70%,#c9bba7 100%)}
+button,input,select{font:inherit}button{border:0;cursor:pointer}
+header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#f8f3eadd;border-bottom:1px solid #c8bba8;position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+header strong{font-size:21px;letter-spacing:.4px}
+.btn{background:#604b36;color:#fff;border-radius:24px;padding:11px 17px;box-shadow:0 4px 10px #34231635}
+.btn.light{background:#e9dfd0;color:#514333;box-shadow:none}
+.btn:active{transform:translateY(1px)}
+main{max-width:900px;margin:auto;padding:20px 14px 110px}
 .screen{display:none}.screen.active{display:block}
-h2{font-size:20px;font-weight:normal;margin:8px 0 18px}
-.hint{font:13px -apple-system,sans-serif;color:#7b7063}
-.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.book-card{height:245px;border-radius:8px 15px 15px 8px;padding:17px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:5px 9px 17px #47372545,inset 7px 0 8px #0003;cursor:pointer;border-left:7px solid #0003}
-.book-card:after,.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#ffffff24,transparent 25%,#00000013 100%);pointer-events:none}
-.book-card b{font-size:22px;line-height:1.2;text-shadow:0 2px 4px #0005}
-.book-card small{font:12px -apple-system,sans-serif;opacity:.85}
-.green{background:linear-gradient(120deg,#23472b,#6f9365)}
-.blue{background:linear-gradient(120deg,#075a78,#47b4c7)}
-.pink{background:linear-gradient(120deg,#c87991,#f4c6cf);color:#57313c}
-.brown{background:linear-gradient(120deg,#60462e,#b38a5b)}
-.add-card{height:245px;border:2px dashed #a99b87;border-radius:12px;background:#f2ece2;color:#716554;font:16px -apple-system,sans-serif;display:grid;place-items:center}
-.formbox{background:#f7f1e7;border:1px solid #d4c8b7;border-radius:14px;padding:16px;box-shadow:0 4px 12px #59452a12}
-label{display:block;font:600 13px -apple-system,sans-serif;margin:13px 0 6px}
-input,select{width:100%;border:1px solid #cfc2af;border-radius:9px;background:#fffdf8;padding:12px;font:16px -apple-system,sans-serif;color:#30291f}
-.theme-row{display:flex;gap:12px;margin:12px 0}
-.swatch{width:42px;height:42px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 5px #0003}
-.swatch.selected{outline:2px solid #6b7e4c}
-.cover-preview{height:170px;margin:14px 0;border-radius:5px 13px 13px 5px;border-left:9px solid #0003;display:grid;place-items:center;color:white;font-size:25px;text-align:center;padding:20px;box-shadow:5px 8px 15px #0003;position:relative;overflow:hidden}
-.reader-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.reader-head strong{font-size:17px;font-weight:normal}
+h2{font-size:22px;font-weight:normal;margin:8px 0 8px}
+.hint{font:14px/1.5 -apple-system,BlinkMacSystemFont,sans-serif;color:#7b7063}
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:22px 18px;align-items:end;margin-top:25px}
+.book-card{height:235px;position:relative;border-radius:5px 13px 13px 5px;padding:17px 13px 15px 22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;cursor:pointer;box-shadow:8px 13px 18px #30231750,inset 8px 0 8px #0004,inset -2px 0 4px #ffffff30;transform:perspective(700px) rotateY(-5deg);border-left:10px solid #0003}
+.book-card:before{content:"";position:absolute;left:7px;top:0;bottom:0;width:2px;background:#ffffff45;box-shadow:3px 0 5px #0003}
+.book-card:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,#ffffff24,transparent 23%,#00000017 100%);pointer-events:none}
+.book-card b{font-size:20px;line-height:1.2;text-align:center;text-shadow:0 2px 4px #0006;z-index:1}
+.book-card small{font:11px -apple-system,sans-serif;text-align:center;opacity:.9;z-index:1}
+.spine-ornament{border-top:1px solid #ffffff70;border-bottom:1px solid #ffffff70;padding:8px 0;margin:4px 0}
+.add-card{height:235px;border:2px dashed #a99b87;border-radius:10px;background:#f1eadd;color:#716554;display:grid;place-items:center;font:16px -apple-system,sans-serif}
+.green{--cover1:#183d2a;--cover2:#63835a;--coverInk:#f3dfad;background:linear-gradient(115deg,#183d2a,#63835a)}
+.blue{--cover1:#073c58;--cover2:#318ba5;--coverInk:#f4e4bf;background:linear-gradient(115deg,#073c58,#318ba5)}
+.pink{--cover1:#9d526a;--cover2:#e4aebe;--coverInk:#fff2e8;background:linear-gradient(115deg,#9d526a,#e4aebe);color:#fff}
+.brown{--cover1:#4b3020;--cover2:#a77b4c;--coverInk:#f3dfad;background:linear-gradient(115deg,#4b3020,#a77b4c)}
+.navy{--cover1:#172b49;--cover2:#526c91;--coverInk:#e8d6a8;background:linear-gradient(115deg,#172b49,#526c91)}
+.burgundy{--cover1:#541d2a;--cover2:#9a4b50;--coverInk:#f4dfb6;background:linear-gradient(115deg,#541d2a,#9a4b50)}
+.formbox{background:#f7f1e7;border:1px solid #d4c8b7;border-radius:18px;padding:18px;box-shadow:0 8px 22px #59452a12}
+label{display:block;font:600 14px -apple-system,sans-serif;margin:14px 0 7px}
+input,select{width:100%;border:1px solid #cfc2af;border-radius:12px;background:#fffdf8;padding:13px;font:16px -apple-system,sans-serif;color:#30291f}
+.theme-row,.style-row{display:flex;gap:11px;flex-wrap:wrap;margin:12px 0}
+.swatch{width:43px;height:43px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 7px #0003}
+.swatch.selected{outline:2px solid #71804f;outline-offset:2px}
+.cover-preview{height:210px;margin:17px 0 20px;border-radius:5px 14px 14px 5px;border-left:12px solid #0004;display:grid;place-items:center;color:var(--coverInk);font-size:26px;text-align:center;padding:20px;box-shadow:9px 13px 18px #0003,inset 5px 0 10px #ffffff25;position:relative;overflow:hidden}
+.cover-preview:before,.cover:before{content:"";position:absolute;inset:12px;border:1px solid #d7bd7c99;pointer-events:none}
+.cover-preview:after,.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#ffffff25,transparent 18%,#00000012 100%);pointer-events:none}
+.cover-preview span{position:relative;z-index:1;text-shadow:0 1px 2px #0002}
+.style-chip{padding:9px 12px;border:1px solid #cbbda9;background:#f9f4eb;border-radius:18px;color:#554633;font:13px -apple-system,sans-serif}
+.style-chip.selected{background:#e4dac9;outline:2px solid #8b7658}
+.cover-view{max-width:460px;margin:15px auto;text-align:center}
+.cover{height:min(68vh,650px);min-height:440px;border-radius:5px 18px 18px 5px;border-left:17px solid #0005;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;color:var(--coverInk);box-shadow:14px 18px 28px #34271e66,inset 6px 0 12px #ffffff22,inset -5px 0 10px #0002;overflow:hidden;transform:perspective(1100px) rotateY(-3deg)}
+.cover:before{inset:20px;border:2px solid #d7bd7caa;box-shadow:inset 0 0 0 5px #ffffff12}
+.cover .ornament{position:relative;z-index:1;border:1px solid #d7bd7caa;padding:30px 16px;width:82%;min-height:55%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:19px;text-align:center}
+.cover h1{font-size:clamp(27px,7vw,38px);font-weight:normal;margin:0;text-shadow:0 2px 4px #0003}
+.cover .rule{width:58%;height:1px;background:#d7bd7caa}
+.cover small{font:11px -apple-system,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.cover.classic .ornament{border-style:double;border-width:3px}
+.cover.minimal:before{inset:0;border:0;background:linear-gradient(90deg,#0003,transparent 18%,#ffffff0a 100%)}
+.cover.minimal .ornament{border:0}
+.cover.antique .ornament{border:3px double #d7bd7cbb;outline:1px solid #d7bd7c77;outline-offset:7px}
+.reader-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:13px}
+.reader-head strong{font-size:18px;font-weight:normal}
 .reader-head .grow{flex:1}
-.bookstage{perspective:1400px;padding:4px 2px 12px;touch-action:pan-y}
-.single-page{position:relative;width:100%;height:min(69vh,760px);min-height:430px;background-color:var(--paper);border-radius:5px 12px 12px 5px;padding:27px 24px 45px;box-shadow:inset 13px 0 18px #a68f6b1c, inset -5px 0 12px #a68f6b18,8px 12px 20px #4b392b35;overflow:hidden;transform-origin:left center}
-.single-page:before{content:"";position:absolute;left:14px;top:0;bottom:0;width:1px;background:#d7cbb9;opacity:.55;pointer-events:none}
-.single-page:after{content:"";position:absolute;right:0;top:0;bottom:0;width:13px;background:linear-gradient(90deg,transparent,#e7dcc8);pointer-events:none}
-.single-page.lined{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#dce1e4 32px)}
-.single-page.blank{background-image:none}
-.single-page.grid{background-image:linear-gradient(#dce1e4 1px,transparent 1px),linear-gradient(90deg,#dce1e4 1px,transparent 1px);background-size:24px 32px}
-.single-page textarea{position:relative;z-index:1;width:100%;height:100%;resize:none;border:0;outline:0;background:transparent;font:17px/32px Georgia,serif;color:#30291f;padding:0 2px 8px;caret-color:#574735}
-.page-number{position:absolute;bottom:13px;left:0;right:0;text-align:center;color:#9b8e7b;font:12px Georgia;z-index:2;pointer-events:none}
-.page-turn-next{animation:flipNext .42s ease both}
-.page-turn-prev{animation:flipPrev .42s ease both}
-@keyframes flipNext{0%{transform:rotateY(0);filter:brightness(1)}45%{transform:rotateY(-22deg);filter:brightness(.83)}100%{transform:rotateY(0);filter:brightness(1)}}
-@keyframes flipPrev{0%{transform:rotateY(0);filter:brightness(1)}45%{transform:rotateY(22deg);filter:brightness(.83)}100%{transform:rotateY(0);filter:brightness(1)}}
-.pen-tools{background:#f7f1e7;border:1px solid #d4c8b7;border-radius:13px;padding:12px;margin:10px 0 12px}
-.tool-title{font:600 12px -apple-system,sans-serif;color:#716657;margin-bottom:8px}
-.color-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
-.pen-color{width:29px;height:29px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px #0003;outline:1px solid #b9ad9d}
-.pen-color.selected{outline:3px solid #82704f}
-.tool-selects{display:flex;gap:10px;margin-top:10px}
-.tool-selects label{flex:1;margin:0}
-.tool-selects select{padding:8px;font-size:13px}
-.controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;font:13px -apple-system,sans-serif;color:#716657}
-.controls button{white-space:nowrap}
-.cover-view{max-width:430px;margin:20px auto;text-align:center}
-.cover{height:65vh;max-height:590px;min-height:440px;border-radius:8px 18px 18px 8px;border-left:15px solid #0004;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px;color:white;box-shadow:12px 16px 25px #34271e55,inset 5px 0 10px #ffffff20;overflow:hidden}
-.cover .ornament{border:1px solid #ffffff88;padding:25px 15px;width:80%;min-height:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
-.cover h1{font-size:32px;font-weight:normal;margin:0;text-shadow:0 2px 5px #0004}
-.cover .rule{width:55%;height:1px;background:#ffffff99}
-.cover small{font:12px -apple-system,sans-serif;letter-spacing:2px;text-transform:uppercase}
+.bookstage{perspective:1500px;padding:4px 2px 14px;max-width:650px;margin:auto}
+.single-page{position:relative;min-height:66vh;background:#fffaf0;border-radius:4px 10px 10px 4px;padding:28px 23px 42px 29px;box-shadow:10px 14px 24px #4b392b35,inset 12px 0 16px #d9c9ad55,inset -2px 0 5px #bba98e55;overflow:hidden;border-left:12px solid #e7dcc8}
+.single-page:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 31px,#dce1e4 32px);opacity:.78;pointer-events:none}
+.single-page.blank:before{background:none}
+.single-page.grid:before{background-image:linear-gradient(#dce1e4 1px,transparent 1px),linear-gradient(90deg,#dce1e4 1px,transparent 1px);background-size:24px 32px}
+.single-page:after{content:"";position:absolute;top:0;bottom:0;left:17px;width:1px;background:#d8c9b3;opacity:.6;pointer-events:none}
+.editor{position:relative;z-index:1;width:100%;min-height:calc(66vh - 70px);outline:0;border:0;background:transparent;white-space:pre-wrap;overflow-wrap:anywhere;font:17px/32px Georgia,serif;color:#3d352c;caret-color:#684d31}
+.editor:empty:before{content:attr(data-placeholder);color:#b2a89a}
+.page-number{position:absolute;bottom:13px;left:0;right:0;text-align:center;color:#9b8e7b;font:12px Georgia;z-index:2}
+.page-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px auto;max-width:650px;padding:10px;background:#f5eee3;border:1px solid #d5c8b5;border-radius:14px}
+.tool-label{font:12px -apple-system,sans-serif;color:#746756;margin-right:2px}
+.ink{width:27px;height:27px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px #0004}
+.ink.selected{outline:2px solid #776348;outline-offset:2px}
+.format-btn{padding:7px 11px;border-radius:8px;background:#e8dfd2;color:#4e4030;font:14px Georgia}
+.controls{display:flex;align-items:center;justify-content:space-between;margin:14px auto;max-width:650px;font:13px -apple-system,sans-serif;color:#716657}
+.controls span{font-variant-numeric:tabular-nums}
+.page-turn{animation:pageTurn .42s ease both;transform-origin:left center}
+@keyframes pageTurn{0%{transform:rotateY(0);opacity:1}45%{transform:rotateY(-75deg);opacity:.8}100%{transform:rotateY(0);opacity:1}}
+.opening{animation:openBook .7s ease both;transform-origin:left center}
+@keyframes openBook{0%{transform:perspective(900px) rotateY(-55deg) scale(.94);opacity:.4}100%{transform:perspective(900px) rotateY(0) scale(1);opacity:1}}
 .empty{text-align:center;color:#82796d;padding:20px;font:14px -apple-system,sans-serif}
-nav{position:fixed;bottom:0;left:0;right:0;background:#f8f4edee;border-top:1px solid #c9beae;display:flex;justify-content:space-around;padding:8px 5px calc(8px + env(safe-area-inset-bottom));z-index:12;backdrop-filter:blur(12px)}
+nav{position:fixed;bottom:0;left:0;right:0;background:#f8f4edee;border-top:1px solid #c9beae;display:flex;justify-content:space-around;padding:8px 5px calc(8px + env(safe-area-inset-bottom));z-index:22;backdrop-filter:blur(12px)}
 nav button{background:none;color:#6d6254;padding:7px 14px;font:12px -apple-system,sans-serif}
 nav button.active{color:#42582e;background:#e6e8dc;border-radius:12px}
-@media(max-width:480px){
- main{padding:15px 12px 115px}.book-card,.add-card{height:210px}
- .single-page{height:66vh;min-height:390px;padding:23px 17px 42px}
- .single-page textarea{font-size:16px}
-}
-@media(max-width:360px){.single-page{padding:19px 13px 40px}.single-page textarea{font-size:15px}}
+@media(max-width:480px){main{padding:15px 12px 105px}.shelf{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 13px}.book-card,.add-card{height:210px}.single-page{min-height:62vh;padding:23px 17px 40px 23px}.editor{min-height:calc(62vh - 65px);font-size:16px;line-height:32px}.cover{min-height:430px;height:62vh}.page-tools{gap:7px}}
 </style>
 </head>
 <body>
-<header>
- <button class="btn light" id="back" onclick="goShelf()" style="visibility:hidden">‹ Geri</button>
- <strong>Defterim</strong>
- <button class="btn" onclick="newBook()">+ Yeni</button>
-</header>
+<header><button class="btn light" id="back" onclick="goShelf()" style="visibility:hidden">â¹ Geri</button><strong>Defterim</strong><button class="btn" onclick="newBook()">+ Yeni</button></header>
 <main>
-<section id="shelf" class="screen active">
- <h2>Kitaplığım</h2><p class="hint">Defterlerini seç, kapağını aç ve yazmaya başla.</p>
- <div id="books" class="shelf"></div>
-</section>
-<section id="create" class="screen">
- <h2>Yeni defter</h2>
- <div class="formbox">
-  <label>Defter adı</label><input id="name" placeholder="Örn. Günlük Notlarım" maxlength="40">
-  <label>Kapak rengi</label>
-  <div class="theme-row">
-   <button class="swatch selected green" onclick="pick('green',this)" aria-label="Yeşil"></button>
-   <button class="swatch blue" onclick="pick('blue',this)" aria-label="Mavi"></button>
-   <button class="swatch pink" onclick="pick('pink',this)" aria-label="Pembe"></button>
-   <button class="swatch brown" onclick="pick('brown',this)" aria-label="Kahverengi"></button>
-  </div>
-  <div id="preview" class="cover-preview green">Yeni Defter</div>
-  <label>İç sayfa düzeni</label>
-  <select id="type"><option value="lined">Çizgili</option><option value="blank">Boş</option><option value="grid">Kareli</option></select>
-  <button class="btn" style="width:100%;margin-top:18px" onclick="createBook()">Defteri oluştur</button>
- </div>
-</section>
-<section id="coverScreen" class="screen">
- <div class="cover-view">
-  <div id="bigCover" class="cover green">
-   <div class="ornament"><small>KİŞİSEL DEFTER</small><div class="rule"></div><h1 id="coverTitle">Defterim</h1><div class="rule"></div><small>NOTLAR • DÜŞÜNCELER • HATIRALAR</small></div>
-  </div>
-  <button class="btn" style="margin-top:22px;padding:14px 28px" onclick="openInside()">Kapağı aç&nbsp; →</button>
-  <p class="hint">Kapağa dokunarak defterinin içine geç.</p>
- </div>
-</section>
+<section id="shelf" class="screen active"><h2>KitaplÄ±ÄÄ±m</h2><p class="hint">Defterlerini seÃ§, kapaÄÄ±nÄ± aÃ§ ve yazmaya baÅla.</p><div id="books" class="shelf"></div></section>
+<section id="create" class="screen"><h2>Yeni defter</h2><div class="formbox">
+<label>Defter adÄ±</label><input id="name" placeholder="Ãrn. GÃ¼nlÃ¼k NotlarÄ±m" maxlength="40">
+<label>Kapak rengi</label><div class="theme-row">
+<button class="swatch selected green" aria-label="YeÅil" onclick="pick('green',this)"></button><button class="swatch blue" aria-label="Mavi" onclick="pick('blue',this)"></button><button class="swatch pink" aria-label="Pembe" onclick="pick('pink',this)"></button><button class="swatch brown" aria-label="Kahverengi" onclick="pick('brown',this)"></button><button class="swatch navy" aria-label="Lacivert" onclick="pick('navy',this)"></button><button class="swatch burgundy" aria-label="Bordo" onclick="pick('burgundy',this)"></button></div>
+<label>Kapak tarzÄ±</label><div class="style-row"><button class="style-chip selected" onclick="pickStyle('classic',this)">Klasik yaldÄ±zlÄ±</button><button class="style-chip" onclick="pickStyle('minimal',this)">Sade</button><button class="style-chip" onclick="pickStyle('antique',this)">Antika iÅlemeli</button></div>
+<div id="preview" class="cover-preview green classic"><span>Yeni Defter</span></div>
+<label>Ä°Ã§ sayfa dÃ¼zeni</label><select id="type"><option value="lined">Ãizgili</option><option value="blank">BoÅ</option><option value="grid">Kareli</option></select>
+<button class="btn" style="width:100%;margin-top:18px;padding:14px" onclick="createBook()">Defteri oluÅtur</button></div></section>
+<section id="coverScreen" class="screen"><div class="cover-view"><div id="bigCover" class="cover green classic"><div class="ornament"><small>KÄ°ÅÄ°SEL DEFTER</small><div class="rule"></div><h1 id="coverTitle">Defterim</h1><div class="rule"></div><small>NOTLAR â¢ DÃÅÃNCELER â¢ HATIRALAR</small></div></div><button class="btn" style="margin-top:22px;padding:14px 30px" onclick="openInside()">KapaÄÄ± aÃ§&nbsp; â</button><p class="hint">KitabÄ±n kapaÄÄ±nÄ± aÃ§ ve yazmaya baÅla.</p></div></section>
 <section id="reader" class="screen">
- <div class="reader-head">
-  <button class="btn light" onclick="showCover()">Kapak</button>
-  <strong id="readerName"></strong><span class="grow"></span>
-  <button class="btn" onclick="addPage()">+ Sayfa</button>
- </div>
- <div class="pen-tools">
-  <div class="tool-title">KALEM RENGİ</div>
-  <div class="color-row" id="penColors">
-   <button class="pen-color selected" data-color="#30291f" style="background:#30291f" aria-label="Siyah"></button>
-   <button class="pen-color" data-color="#2458b8" style="background:#2458b8" aria-label="Mavi"></button>
-   <button class="pen-color" data-color="#c83232" style="background:#c83232" aria-label="Kırmızı"></button>
-   <button class="pen-color" data-color="#287747" style="background:#287747" aria-label="Yeşil"></button>
-   <button class="pen-color" data-color="#8050a8" style="background:#8050a8" aria-label="Mor"></button>
-   <button class="pen-color" data-color="#d97920" style="background:#d97920" aria-label="Turuncu"></button>
-   <button class="pen-color" data-color="#d65b91" style="background:#d65b91" aria-label="Pembe"></button>
-   <button class="pen-color" data-color="#80563b" style="background:#80563b" aria-label="Kahverengi"></button>
-  </div>
-  <div class="tool-selects">
-   <label>Kalem kalınlığı
-    <select id="penSize"><option value="15">İnce</option><option value="17" selected>Orta</option><option value="20">Kalın</option></select>
-   </label>
-   <label>Yazı boyutu
-    <select id="fontSize"><option value="15">Küçük</option><option value="17" selected>Normal</option><option value="20">Büyük</option><option value="23">Çok büyük</option></select>
-   </label>
-  </div>
- </div>
- <div class="bookstage" id="bookstage">
-  <div class="single-page lined" id="singlePage">
-   <textarea id="pageText" placeholder="Buraya yazmaya başlayabilirsin..." spellcheck="true"></textarea>
-   <div class="page-number" id="pageNum">1</div>
-  </div>
- </div>
- <div class="controls">
-  <button class="btn light" onclick="turn(-1)">‹ Önceki</button>
-  <span id="count">1 / 1</span>
-  <button class="btn light" onclick="turn(1)">Sonraki ›</button>
- </div>
- <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px">
-  <button class="btn light" onclick="renameBook()">Defter adını değiştir</button>
-  <button class="btn light" onclick="removeBook()">Defteri sil</button>
- </div>
- <p class="hint" style="text-align:center;margin-top:12px">Sayfayı çevirmek için parmağını sağdan sola veya soldan sağa kaydır.</p>
+<div class="reader-head"><button class="btn light" onclick="showCover()">Kapak</button><strong id="readerName"></strong><span class="grow"></span><button class="btn" onclick="addPage()">+ Sayfa</button></div>
+<div class="bookstage"><div class="single-page lined" id="singlePage"><div id="editor" class="editor" contenteditable="true" spellcheck="true" data-placeholder="Buraya yazmaya baÅlayabilirsin..."></div><div class="page-number" id="pageNum">1</div></div></div>
+<div class="page-tools"><span class="tool-label">YazÄ± rengi</span>
+<button class="ink selected" style="background:#30271f" aria-label="Siyah" onclick="setInk('#30271f',this)"></button><button class="ink" style="background:#244f9b" aria-label="Mavi" onclick="setInk('#244f9b',this)"></button><button class="ink" style="background:#a52d35" aria-label="KÄ±rmÄ±zÄ±" onclick="setInk('#a52d35',this)"></button><button class="ink" style="background:#26734a" aria-label="YeÅil" onclick="setInk('#26734a',this)"></button><button class="ink" style="background:#75439b" aria-label="Mor" onclick="setInk('#75439b',this)"></button><button class="ink" style="background:#b27621" aria-label="Turuncu" onclick="setInk('#b27621',this)"></button><span style="flex:1"></span><button class="format-btn" onclick="formatText('bold')"><b>B</b></button><button class="format-btn" onclick="formatText('italic')"><i>I</i></button><button class="format-btn" onclick="formatText('underline')"><u>U</u></button></div>
+<div class="controls"><button class="btn light" onclick="turn(-1)">â¹ Ãnceki</button><span id="count">1 / 1</span><button class="btn light" onclick="turn(1)">Sonraki âº</button></div>
+<div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px"><button class="btn light" onclick="renameBook()">Defter adÄ±nÄ± deÄiÅtir</button><button class="btn light" onclick="removeBook()">Defteri sil</button></div>
 </section>
 </main>
-<nav>
- <button id="navShelf" class="active" onclick="goShelf()">▤<br>Kitaplık</button>
- <button id="navNew" onclick="newBook()">＋<br>Yeni defter</button>
-</nav>
+<nav><button id="navShelf" class="active" onclick="goShelf()">â¤<br>KitaplÄ±k</button><button id="navNew" onclick="newBook()">ï¼<br>Yeni defter</button></nav>
 <script>
-const themes={green:'linear-gradient(120deg,#23472b,#6f9365)',blue:'linear-gradient(120deg,#075a78,#47b4c7)',pink:'linear-gradient(120deg,#c87991,#f4c6cf)',brown:'linear-gradient(120deg,#60462e,#b38a5b)'};
-let books=[];
-try{books=JSON.parse(localStorage.getItem('defterim_real_books')||'[]');if(!Array.isArray(books))books=[]}catch(e){books=[]}
-let theme='green',current=null,pageIndex=0,penColor='#30291f',penSize=17,fontSize=17,turning=false;
-function persist(){try{localStorage.setItem('defterim_real_books',JSON.stringify(books))}catch(e){alert('Kayıt alanı dolmuş olabilir. Lütfen bazı eski defterleri yedekleyin.')}}
+const themes=['green','blue','pink','brown','navy','burgundy'];
+let books=JSON.parse(localStorage.getItem('defterim_real_books')||'[]'),theme='green',coverStyle='classic',current=null,pageIndex=0,activeInk='#30271f';
+function persist(){localStorage.setItem('defterim_real_books',JSON.stringify(books))}
 function screen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('back').style.visibility=id==='shelf'?'hidden':'visible';document.getElementById('navShelf').classList.toggle('active',id==='shelf');document.getElementById('navNew').classList.toggle('active',id==='create')}
 function goShelf(){persist();drawShelf();screen('shelf')}
-function newBook(){screen('create');document.getElementById('name').value='';}
-function pick(t,el){theme=t;document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('preview').className='cover-preview '+t}
-document.getElementById('name').addEventListener('input',e=>document.getElementById('preview').textContent=e.target.value||'Yeni Defter');
-function createBook(){let title=document.getElementById('name').value.trim()||'Adsız Defter';current={id:Date.now(),title,theme,type:document.getElementById('type').value,pages:['']};books.push(current);persist();showCover()}
-function drawShelf(){let el=document.getElementById('books');el.innerHTML='';books.forEach(b=>{if(!Array.isArray(b.pages))b.pages=[''];let card=document.createElement('div');card.className='book-card '+(b.theme||'brown');let t=document.createElement('b');t.textContent=b.title||'Adsız Defter';let sm=document.createElement('small');sm.textContent='Kapağı aç  ·  '+b.pages.length+' sayfa';card.append(t,sm);card.onclick=()=>{current=b;showCover()};el.append(card)});let add=document.createElement('button');add.className='add-card';add.innerHTML='<span style="font-size:34px">＋</span><span>Yeni defter oluştur</span>';add.onclick=newBook;el.append(add);if(!books.length){let e=document.createElement('div');e.className='empty';e.textContent='Henüz defterin yok. İlk defterini oluştur.';el.prepend(e)}}
-function showCover(){if(!current)return;document.getElementById('bigCover').className='cover '+(current.theme||'brown');document.getElementById('coverTitle').textContent=current.title||'Defterim';screen('coverScreen')}
-function openInside(){if(!Array.isArray(current.pages))current.pages=[''];if(!current.pages.length)current.pages=[''];pageIndex=0;document.getElementById('readerName').textContent=current.title;screen('reader');renderPage()}
-function renderPage(){if(!current)return;if(!Array.isArray(current.pages))current.pages=[''];while(current.pages.length<=pageIndex)current.pages.push('');let area=document.getElementById('pageText');area.value=current.pages[pageIndex]??'';area.style.color=penColor;area.style.fontSize=fontSize+'px';area.style.lineHeight=(fontSize+15)+'px';let page=document.getElementById('singlePage');page.className='single-page '+(current.type||'lined');document.getElementById('pageNum').textContent=pageIndex+1;document.getElementById('count').textContent=(pageIndex+1)+' / '+current.pages.length;document.getElementById('readerName').textContent=current.title||'Adsız Defter'}
-document.getElementById('pageText').addEventListener('input',e=>{if(!current)return;while(current.pages.length<=pageIndex)current.pages.push('');current.pages[pageIndex]=e.target.value;persist()});
-function turn(dir){if(!current||turning)return;let next=pageIndex+dir;if(next<0)return;if(next>=current.pages.length){if(dir<0)return;current.pages.push('');persist()}turning=true;let page=document.getElementById('singlePage');page.classList.remove('page-turn-next','page-turn-prev');void page.offsetWidth;page.classList.add(dir>0?'page-turn-next':'page-turn-prev');setTimeout(()=>{pageIndex=next;renderPage();page.classList.remove('page-turn-next','page-turn-prev');turning=false},210)}
-function addPage(){if(!current)return;current.pages.push('');pageIndex=current.pages.length-1;persist();renderPage();document.getElementById('pageText').focus()}
-document.getElementById('penColors').addEventListener('click',e=>{let b=e.target.closest('.pen-color');if(!b)return;penColor=b.dataset.color;document.querySelectorAll('.pen-color').forEach(x=>x.classList.toggle('selected',x===b));let a=document.getElementById('pageText');a.style.color=penColor});
-document.getElementById('penSize').addEventListener('change',e=>{penSize=Number(e.target.value);fontSize=penSize;document.getElementById('fontSize').value=String(fontSize);applyTextStyle()});
-document.getElementById('fontSize').addEventListener('change',e=>{fontSize=Number(e.target.value);applyTextStyle()});
-function applyTextStyle(){let a=document.getElementById('pageText');a.style.color=penColor;a.style.fontSize=fontSize+'px';a.style.lineHeight=(fontSize+15)+'px'}
-function renameBook(){let n=prompt('Yeni defter adı:',current.title);if(n&&n.trim()){current.title=n.trim();persist();document.getElementById('readerName').textContent=current.title;document.getElementById('coverTitle').textContent=current.title}}
-function removeBook(){if(confirm('Bu defteri ve içindeki sayfaları silmek istiyor musun?')){books=books.filter(b=>b.id!==current.id);current=null;goShelf()}}
-let touchX=0,touchY=0;
-const stage=document.getElementById('bookstage');
-stage.addEventListener('touchstart',e=>{if(!e.touches.length)return;touchX=e.touches[0].clientX;touchY=e.touches[0].clientY},{passive:true});
-stage.addEventListener('touchend',e=>{if(!e.changedTouches.length)return;let dx=e.changedTouches[0].clientX-touchX,dy=e.changedTouches[0].clientY-touchY;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.25){turn(dx<0?1:-1)}},{passive:true});
-stage.addEventListener('mousedown',e=>{touchX=e.clientX;touchY=e.clientY});
-stage.addEventListener('mouseup',e=>{let dx=e.clientX-touchX,dy=e.clientY-touchY;if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.25)turn(dx<0?1:-1)});
+function newBook(){theme='green';coverStyle='classic';document.getElementById('name').value='';document.querySelectorAll('.swatch').forEach((x,i)=>x.classList.toggle('selected',i===0));document.querySelectorAll('.style-chip').forEach((x,i)=>x.classList.toggle('selected',i===0));updatePreview();screen('create')}
+function pick(t,el){theme=t;document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');updatePreview()}
+function pickStyle(s,el){coverStyle=s;document.querySelectorAll('.style-chip').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');updatePreview()}
+function updatePreview(){let p=document.getElementById('preview');p.className='cover-preview '+theme+' '+coverStyle;p.innerHTML='<span></span>';p.querySelector('span').textContent=document.getElementById('name').value.trim()||'Yeni Defter'}
+document.getElementById('name').addEventListener('input',updatePreview);
+function createBook(){let title=document.getElementById('name').value.trim()||'AdsÄ±z Defter';current={id:Date.now(),title,theme,coverStyle,type:document.getElementById('type').value,pages:['']};books.push(current);persist();showCover()}
+function drawShelf(){let el=document.getElementById('books');el.innerHTML='';books.forEach(b=>{let card=document.createElement('div');card.className='book-card '+(themes.includes(b.theme)?b.theme:'green');let t=document.createElement('b');t.className='spine-ornament';t.textContent=b.title;let sm=document.createElement('small');sm.textContent='KÄ°ÅÄ°SEL DEFTER  Â·  '+(b.pages?.length||1)+' SAYFA';card.append(t,sm);card.onclick=()=>{current=b;if(!Array.isArray(current.pages))current.pages=[''];showCover()};el.append(card)});let add=document.createElement('button');add.className='add-card';add.innerHTML='<span style="font-size:38px">ï¼</span><span>Yeni defter oluÅtur</span>';add.onclick=newBook;el.append(add);if(!books.length){let e=document.createElement('div');e.className='empty';e.textContent='HenÃ¼z defterin yok. Ä°lk defterini oluÅtur.';el.prepend(e)}}
+function showCover(){if(!current)return;let style=current.coverStyle||'classic',color=themes.includes(current.theme)?current.theme:'green';document.getElementById('bigCover').className='cover '+color+' '+style;document.getElementById('coverTitle').textContent=current.title;screen('coverScreen')}
+function openInside(){pageIndex=0;document.getElementById('readerName').textContent=current.title;screen('reader');renderPage();let p=document.getElementById('singlePage');p.classList.remove('opening');void p.offsetWidth;p.classList.add('opening')}
+function saveCurrentPage(){if(!current)return;current.pages[pageIndex]=document.getElementById('editor').innerHTML;persist()}
+function renderPage(){let editor=document.getElementById('editor');let content=current.pages[pageIndex]??'';if(/<\/?(?:div|p|span|br|b|strong|i|em|u|font)\b/i.test(content)){editor.innerHTML=content}else{editor.textContent=content}document.getElementById('pageNum').textContent=pageIndex+1;document.getElementById('count').textContent=(pageIndex+1)+' / '+current.pages.length;document.getElementById('singlePage').className='single-page '+(current.type||'lined');document.getElementById('readerName').textContent=current.title}
+document.getElementById('editor').addEventListener('input',saveCurrentPage);
+function turn(dir){saveCurrentPage();let next=pageIndex+dir;if(next<0)return;if(next>=current.pages.length){current.pages.push('');persist()}let p=document.getElementById('singlePage');p.classList.remove('page-turn');void p.offsetWidth;p.classList.add('page-turn');setTimeout(()=>{pageIndex=next;renderPage();p.classList.remove('page-turn')},420)}
+function addPage(){saveCurrentPage();current.pages.splice(pageIndex+1,0,'');pageIndex++;persist();renderPage();document.getElementById('editor').focus()}
+function setInk(color,el){activeInk=color;document.querySelectorAll('.ink').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('editor').focus();document.execCommand('styleWithCSS',false,true);document.execCommand('foreColor',false,color);saveCurrentPage()}
+function formatText(command){document.getElementById('editor').focus();document.execCommand(command,false,null);saveCurrentPage()}
+function renameBook(){let n=prompt('Yeni defter adÄ±:',current.title);if(n&&n.trim()){current.title=n.trim();persist();document.getElementById('readerName').textContent=current.title;document.getElementById('coverTitle').textContent=current.title}}
+function removeBook(){if(confirm('Bu defteri ve iÃ§indeki sayfalarÄ± silmek istiyor musun?')){books=books.filter(b=>b.id!==current.id);current=null;goShelf()}}
 drawShelf();
 if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
