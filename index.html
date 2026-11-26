@@ -3,15 +3,19 @@
 <style>
 :root{--ink:#30271f;--paper:#fffaf0;--wood:#604b36;--rule:#dce1e4}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Georgia,serif;background:radial-gradient(ellipse at top,#f6f0e6,#ddd2c2 70%,#c9bba7)}button,input,select{font:inherit}button{border:0;cursor:pointer}header{min-height:calc(68px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;padding:env(safe-area-inset-top) 16px 0;background:#f8f3eadd;border-bottom:1px solid #c8bba8;position:sticky;top:0;z-index:30;isolation:isolate}header strong{font-size:21px}.btn{background:var(--wood);color:white;border-radius:24px;padding:11px 17px}.btn.light{background:#e9dfd0;color:#514333}main{max-width:850px;margin:auto;padding:16px 14px 110px}.screen{display:none}.screen.active{display:block}h2{font-size:22px;font-weight:normal}.hint{font:14px/1.5 -apple-system,sans-serif;color:#7b7063}.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}.book-card{height:220px;border-radius:5px 13px 13px 5px;padding:18px;color:white;display:flex;flex-direction:column;justify-content:space-between;text-align:center;box-shadow:8px 13px 18px #30231750,inset 8px 0 8px #0004;cursor:pointer}.book-card b{font-size:20px;border-block:1px solid #ffffff70;padding:10px}.book-card small{font:11px -apple-system,sans-serif}.add-card{height:220px;border:2px dashed #a99b87;border-radius:10px;background:#f1eadd;color:#716554}.green{--ci:#f3dfad;background:linear-gradient(115deg,#183d2a,#63835a)}.blue{--ci:#f4e4bf;background:linear-gradient(115deg,#073c58,#318ba5)}.pink{--ci:#fff2e8;background:linear-gradient(115deg,#9d526a,#e4aebe)}.brown{--ci:#f3dfad;background:linear-gradient(115deg,#4b3020,#a77b4c)}.navy{--ci:#e8d6a8;background:linear-gradient(115deg,#172b49,#526c91)}.burgundy{--ci:#f4dfb6;background:linear-gradient(115deg,#541d2a,#9a4b50)}.formbox{background:#f7f1e7;border:1px solid #d4c8b7;border-radius:18px;padding:18px}label{display:block;font:600 14px -apple-system,sans-serif;margin:14px 0 7px}input,select{width:100%;border:1px solid #cfc2af;border-radius:12px;background:#fffdf8;padding:12px;font:16px -apple-system,sans-serif}.theme-row,.style-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.swatch{width:42px;height:42px;border-radius:50%;border:3px solid white;box-shadow:0 2px 7px #0003}.swatch.selected{outline:2px solid #71804f;outline-offset:2px}.style-chip{padding:9px 12px;border:1px solid #cbbda9;background:#f9f4eb;border-radius:18px;color:#554633;font:13px -apple-system,sans-serif}.style-chip.selected{background:#e4dac9;outline:2px solid #8b7658}.cover-preview{height:200px;margin:17px 0;border-radius:8px;border-left:12px solid #0004;display:grid;place-items:center;color:var(--ci);font-size:27px;text-shadow:0 2px 3px #0004;box-shadow:9px 13px 18px #0003}.cover-view{max-width:460px;margin:15px auto;text-align:center}.cover{height:62vh;min-height:430px;border-radius:6px 18px 18px 6px;border-left:17px solid #0005;display:grid;place-items:center;padding:28px;color:var(--ci);box-shadow:14px 18px 28px #34271e66,inset 6px 0 12px #ffffff22}.ornament{border:3px double #d7bd7caa;padding:45px 15px;width:82%;text-align:center}.cover h1{font-weight:normal}.cover.minimal .ornament{border:0}.cover.antique .ornament{outline:2px solid #d7bd7caa;outline-offset:8px}.reader-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.grow{flex:1}.single-page{position:relative;display:flex;min-height:62vh;background:var(--paper);padding:16px 17px 40px 23px;border-left:12px solid #e7dcc8;border-radius:4px 10px 10px 4px;box-shadow:10px 14px 24px #4b392b35;overflow:hidden}
 /* Çizgiler yazının taban çizgisinin hemen altında: yazı çizginin üstünde durur */
-.single-page:before{content:"";position:absolute;inset:0;background:linear-gradient(var(--rule) 1px,transparent 1px) 0 41px/100% 32px repeat;pointer-events:none}.single-page.blank:before{background:none}.single-page.grid:before{background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:24px 32px;background-position:0 41px}.editor{position:relative;z-index:1;display:block;flex:1 1 auto;width:100%;min-width:0;min-height:calc(62vh - 55px);outline:0;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;vertical-align:top;margin:0;padding:0;font:16px/32px Georgia,serif;caret-color:#684d31;cursor:text;user-select:text;-webkit-user-select:text;touch-action:pan-y}.editor:empty:before{content:attr(data-placeholder);color:#b2a89a}.editor img{display:inline-block;vertical-align:baseline;max-width:100%;max-height:420px;width:auto;height:auto;object-fit:contain;margin:0 5px 0 0;touch-action:none;cursor:grab;user-select:none;-webkit-user-drag:none}.editor img.image-selected{touch-action:none}.editor img.image-selected:after{content:""}.editor img.image-selected{outline:2px solid #9b7547;outline-offset:3px;border-radius:3px}/* Resim secim cercevesi ve dokunmatik tutamaclar */
-#imageOverlay{position:absolute;z-index:12;display:none;border:2px solid #8b653d;pointer-events:none;touch-action:none}
+.single-page:before{content:"";position:absolute;inset:0;background:linear-gradient(var(--rule) 1px,transparent 1px) 0 41px/100% 32px repeat;pointer-events:none}.single-page.blank:before{background:none}.single-page.grid:before{background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:24px 32px;background-position:0 41px}.editor{position:relative;z-index:1;display:block;flex:1 1 auto;width:100%;min-width:0;min-height:calc(62vh - 55px);outline:0;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;vertical-align:top;margin:0;padding:0;font:16px/32px Georgia,serif;caret-color:#684d31;cursor:text;user-select:text;-webkit-user-select:text;touch-action:pan-y}.editor:empty:before{content:attr(data-placeholder);color:#b2a89a}.editor img{display:block;float:left;clear:none;vertical-align:top;width:min(46%,220px);max-width:100%;max-height:none;height:auto;object-fit:contain;margin:2px 12px 9px 0;touch-action:none;cursor:grab;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none}.editor img.image-selected{touch-action:none;outline:2px solid #9b7547;outline-offset:3px;border-radius:3px}.editor [data-image-caret]{display:inline;white-space:pre;user-select:text}
+.editor .page-note{display:block;position:relative;z-index:1;min-height:32px;margin:0;padding:0;font:16px/32px Georgia,serif;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;outline:0;color:inherit}
+.editor .page-note:empty:before{content:"Notunu buraya yaz...";color:#b2a89a;pointer-events:none}
+.editor .page-note + .page-note{margin-top:0}/* Resim secim cercevesi ve dokunmatik tutamaclar */
+#imageOverlay{position:absolute;z-index:12;display:none;border:2px solid #8b653d;pointer-events:none;touch-action:none;overflow:visible}
 #imageOverlay.visible{display:block}
-#imageOverlay .img-handle{position:absolute;width:22px;height:22px;border:2px solid #76512f;background:#fffaf0;border-radius:50%;padding:0;pointer-events:auto;touch-action:none;box-shadow:0 1px 5px #0005}
+#imageOverlay .img-handle{position:absolute;width:28px;height:28px;border:2px solid #76512f;background:#fffaf0;border-radius:50%;padding:0;pointer-events:auto;touch-action:none;box-shadow:0 1px 5px #0005}
 #imageOverlay .img-handle.nw{left:-12px;top:-12px;cursor:nwse-resize}#imageOverlay .img-handle.n{left:calc(50% - 11px);top:-12px;cursor:ns-resize}
 #imageOverlay .img-handle.ne{right:-12px;top:-12px;cursor:nesw-resize}#imageOverlay .img-handle.e{right:-12px;top:calc(50% - 11px);cursor:ew-resize}
 #imageOverlay .img-handle.se{right:-12px;bottom:-12px;cursor:nwse-resize}#imageOverlay .img-handle.s{left:calc(50% - 11px);bottom:-12px;cursor:ns-resize}
 #imageOverlay .img-handle.sw{left:-12px;bottom:-12px;cursor:nesw-resize}#imageOverlay .img-handle.w{left:-12px;top:calc(50% - 11px);cursor:ew-resize}
-#imageOverlay .img-move{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:#76512f;color:white;border:2px solid white;font:22px/1 -apple-system,sans-serif;pointer-events:auto;touch-action:none;box-shadow:0 1px 5px #0006}
+#imageOverlay .img-move{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#76512f;color:white;border:2px solid white;font:22px/1 -apple-system,sans-serif;pointer-events:auto;touch-action:none;box-shadow:0 1px 5px #0006}
+#imageOverlay .img-zoom{position:absolute;left:-13px;top:-43px;width:30px;height:30px;border-radius:50%;background:#315c8b;color:white;font:19px/1 -apple-system,sans-serif;border:2px solid white;pointer-events:auto;touch-action:manipulation}
 #imageOverlay .img-delete{position:absolute;right:-13px;top:-43px;width:30px;height:30px;border-radius:50%;background:#a52d35;color:white;font:18px/1 -apple-system,sans-serif;border:2px solid white;pointer-events:auto;touch-action:manipulation}
 .image-tools{display:none;gap:7px;align-items:center;flex-wrap:wrap;margin:8px 0;padding:10px;background:#eee5d8;border:1px solid #cdbda7;border-radius:12px}.image-tools.visible{display:flex}.image-tools button{padding:8px 11px;border-radius:8px;background:#e0d3c1;color:#4e4030;font:13px -apple-system,sans-serif}.image-tools button.danger{background:#f1d9d5;color:#8b2922}.image-tools span{font:12px -apple-system,sans-serif;color:#665644}.pdf-link{display:inline-block;padding:10px 12px;margin:8px 0;background:#eee5d8;border:1px solid #cdbda7;border-radius:9px;color:#604b36;font:14px -apple-system,sans-serif}.page-number{position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#9b8e7b;font-size:12px;z-index:2}.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0;padding:10px;background:#f5eee3;border:1px solid #d5c8b5;border-radius:14px}.ink{width:28px;height:28px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px #0004}.ink.selected{outline:2px solid #776348;outline-offset:2px}.format-btn{padding:8px 11px;border-radius:8px;background:#e8dfd2;color:#4e4030}.controls{display:flex;justify-content:space-between;align-items:center;margin:14px 0;font:13px -apple-system,sans-serif}
 .editor-status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:7px 2px;color:#817565;font:12px -apple-system,sans-serif}
@@ -92,14 +96,24 @@ body.dark .single-page:after{background:#5a4d3d}
 .cover.cover1 .ornament{transform:translateY(-14%)}
 .cover-preview.cimg{height:240px;width:calc(240px*var(--ar));margin:17px auto;padding:0 18%;text-align:center;font-size:18px;overflow-wrap:anywhere;box-shadow:6px 9px 14px #0003}
 .cover-preview.cover1{padding-bottom:28%}
+
+/* Tam ekran resim inceleyici: sayfadaki resmin boyutunu değiştirmeden yakınlaştır */
+#imageViewer{position:fixed;inset:0;z-index:1000;display:none;background:#17130ff5;padding:calc(14px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom));touch-action:none}
+#imageViewer.open{display:flex;flex-direction:column}
+#imageViewer .viewer-top{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;font:14px -apple-system,sans-serif;padding:4px 2px 12px}
+#imageViewer .viewer-stage{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none}
+#imageViewer .viewer-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transform-origin:center center;will-change:transform;user-select:none;-webkit-user-drag:none;pointer-events:none}
+#imageViewer button{border:1px solid #ffffff55;border-radius:22px;background:#ffffff20;color:#fff;padding:9px 14px;font:14px -apple-system,sans-serif}
+#imageViewer .viewer-bottom{display:flex;justify-content:center;align-items:center;gap:10px;padding:12px 0 2px;color:#fff;font:13px -apple-system,sans-serif}
+#imageViewer .viewer-bottom button{min-width:44px;font-size:18px}
 </style></head><body>
 <header><button class="btn light" id="back" onclick="goShelf()" style="visibility:hidden">‹ Geri</button><strong>Defterim</strong><button class="btn" onclick="newBook()">+ Yeni</button></header><main>
 <section id="shelf" class="screen active"><h2>Kitaplığım</h2><p class="hint">Defterlerini seç, kapağını aç ve yazmaya başla.</p><div id="books" class="shelf"></div></section>
 <section id="create" class="screen"><h2>Yeni defter</h2><div class="formbox"><label>Defter adı</label><input id="name" maxlength="40" placeholder="Örn. Günlük Notlarım"><label>Kapak rengi</label><div class="theme-row" id="newThemes"></div><label>Cilt tarzı</label><div class="style-row" id="newStyles"></div><div id="preview" class="cover-preview green classic">Yeni Defter</div><label>İç sayfa düzeni</label><select id="type"><option value="lined">Çizgili</option><option value="blank">Boş</option><option value="grid">Kareli</option></select><button class="btn" style="width:100%;margin-top:18px" onclick="createBook()">Defteri oluştur</button></div></section>
 <section id="coverScreen" class="screen"><div class="cover-view"><div id="bigCover" class="cover green classic"><div class="ornament"><small>KİŞİSEL DEFTER</small><hr><h1 id="coverTitle">Defterim</h1><hr><small>NOTLAR • DÜŞÜNCELER • HATIRALAR</small></div></div><button class="btn" style="margin-top:20px" onclick="openInside()">Kapağı aç →</button></div></section>
-<section id="reader" class="screen"><div class="reader-head"><button class="btn light" onclick="showCover()">Kapak</button><strong id="readerName"></strong><span class="grow"></span><button class="btn light" onclick="editCover()">Cildi değiştir</button><button class="btn" onclick="addPage()">+ Sayfa</button></div><div class="single-page lined" id="singlePage"><div id="editor" class="editor" contenteditable="true" spellcheck="true" data-placeholder="Buraya yazmaya başlayabilirsin..."></div><div id="imageOverlay" aria-label="Resim düzenleme tutamaçları"><button class="img-handle nw" data-handle="nw" aria-label="Sol üst köşeden boyutlandır"></button><button class="img-handle n" data-handle="n" aria-label="Üstten boyutlandır"></button><button class="img-handle ne" data-handle="ne" aria-label="Sağ üst köşeden boyutlandır"></button><button class="img-handle e" data-handle="e" aria-label="Sağdan boyutlandır"></button><button class="img-handle se" data-handle="se" aria-label="Sağ alt köşeden boyutlandır"></button><button class="img-handle s" data-handle="s" aria-label="Alttan boyutlandır"></button><button class="img-handle sw" data-handle="sw" aria-label="Sol alt köşeden boyutlandır"></button><button class="img-handle w" data-handle="w" aria-label="Soldan boyutlandır"></button><button class="img-move" data-handle="move" aria-label="Resmi taşı">✥</button><button class="img-delete" data-handle="delete" aria-label="Resmi sil">×</button></div><div class="page-number" id="pageNum">1</div></div>
+<section id="reader" class="screen"><div class="reader-head"><button class="btn light" onclick="showCover()">Kapak</button><strong id="readerName"></strong><span class="grow"></span><button class="btn light" onclick="editCover()">Cildi değiştir</button><button class="btn" onclick="addPage()">+ Sayfa</button></div><div class="single-page lined" id="singlePage"><div id="editor" class="editor" contenteditable="true" spellcheck="true" data-placeholder="Buraya yazmaya başlayabilirsin..."></div><div id="imageOverlay" aria-label="Resim düzenleme tutamaçları"><button class="img-handle nw" data-handle="nw" aria-label="Sol üst köşeden boyutlandır"></button><button class="img-handle n" data-handle="n" aria-label="Üstten boyutlandır"></button><button class="img-handle ne" data-handle="ne" aria-label="Sağ üst köşeden boyutlandır"></button><button class="img-handle e" data-handle="e" aria-label="Sağdan boyutlandır"></button><button class="img-handle se" data-handle="se" aria-label="Sağ alt köşeden boyutlandır"></button><button class="img-handle s" data-handle="s" aria-label="Alttan boyutlandır"></button><button class="img-handle sw" data-handle="sw" aria-label="Sol alt köşeden boyutlandır"></button><button class="img-handle w" data-handle="w" aria-label="Soldan boyutlandır"></button><button class="img-move" data-handle="move" aria-label="Resmi taşı">✥</button><button class="img-zoom" data-handle="zoom" aria-label="Resmi yakından incele">⌕</button><button class="img-delete" data-handle="delete" aria-label="Resmi sil">×</button></div><div class="page-number" id="pageNum">1</div></div>
 <div class="editor-status"><span id="saveStatus" aria-live="polite">Değişiklikler otomatik kaydedilir</span><span id="wordCount">0 kelime · 0 karakter</span></div><div class="tools"><button class="format-btn" onclick="historyCommand('undo')" title="Geri al">↶ Geri al</button><button class="format-btn" onclick="historyCommand('redo')" title="Yinele">↷ Yinele</button><span class="grow"></span><span>Kalem rengi</span><button class="ink selected" style="background:#30271f" onclick="setInk('#30271f',this)"></button><button class="ink" style="background:#244f9b" onclick="setInk('#244f9b',this)"></button><button class="ink" style="background:#a52d35" onclick="setInk('#a52d35',this)"></button><button class="ink" style="background:#26734a" onclick="setInk('#26734a',this)"></button><button class="ink" style="background:#75439b" onclick="setInk('#75439b',this)"></button><button class="ink" style="background:#b27621" onclick="setInk('#b27621',this)"></button><span class="grow"></span><button class="format-btn" onclick="formatText('bold')"><b>B</b></button><button class="format-btn" onclick="formatText('italic')"><i>I</i></button><button class="format-btn" onclick="formatText('underline')"><u>U</u></button></div>
-<div class="image-tools" id="imageTools"><span>Seçili resim:</span><span>Resmi parmağınla sürükle; sağ alt köşesinden büyütüp küçült</span><button onclick="alignImage('left')">Sola</button><button onclick="alignImage('center')">Ortala</button><button onclick="alignImage('right')">Sağa</button><button class="danger" onclick="deleteSelectedImage()">Resmi sil</button></div><div class="tools"><button class="format-btn" onclick="imageInput.click()">＋ Resim ekle</button><button class="format-btn" onclick="pdfInput.click()">＋ PDF ekle</button><input id="imageInput" class="hidden" type="file" accept="image/*" onchange="addImage(this)"><input id="pdfInput" class="hidden" type="file" accept="application/pdf,.pdf" onchange="addPDF(this)"></div>
+<div class="image-tools" id="imageTools"><span>Seçili resim:</span><span>Resmi parmağınla sürükle; sağ alt köşesinden büyütüp küçült</span><button onclick="alignImage('left')">Sola</button><button onclick="alignImage('center')">Ortala</button><button onclick="alignImage('right')">Sağa</button><button class="danger" onclick="deleteSelectedImage()">Resmi sil</button></div><div class="tools"><button class="format-btn" onclick="imageInput.click()">＋ Resim ekle</button><button class="format-btn" onclick="addNoteBlock()">＋ Not ekle</button><button class="format-btn" onclick="pdfInput.click()">＋ PDF ekle</button><input id="imageInput" class="hidden" type="file" accept="image/*" onchange="addImage(this)"><input id="pdfInput" class="hidden" type="file" accept="application/pdf,.pdf" onchange="addPDF(this)"></div>
 <div class="controls"><button class="btn light" onclick="turn(-1)">‹ Önceki</button><button class="btn light" id="count" onclick="gotoPage()">1 / 1</button><button class="btn light" onclick="turn(1)">Sonraki ›</button></div><div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap"><button class="btn light" onclick="removePage()">Sayfayı sil</button><button class="btn light" onclick="renameBook()">Defter adını değiştir</button><button class="btn light" onclick="removeBook()">Defteri sil</button></div></section>
 <section id="coverEdit" class="screen"><h2>Cilt tasarımı</h2><div class="formbox"><label>Kapak rengi</label><div class="theme-row" id="editThemes"></div><label>Cilt tarzı</label><div class="style-row" id="editStyles"></div><div id="editPreview" class="cover-preview green classic"></div><button class="btn" style="width:100%" onclick="saveCoverEdit()">Cildi kaydet</button></div></section>
 <section id="search" class="screen"><h2>Ara</h2><input id="q" type="search" placeholder="Tüm defterlerde ara..." autocomplete="off"><div id="results"></div></section>
@@ -108,7 +122,12 @@ body.dark .single-page:after{background:#5a4d3d}
 <div class="setting"><label>Yedekle</label><p>Tüm defterlerini, resimlerini ve PDF'lerini tek bir dosyaya kaydeder. Simgeyi silmeden veya telefon değiştirmeden önce al.</p><button class="btn" onclick="exportBackup()">Yedeği al</button></div>
 <div class="setting"><label>Yedekten geri yükle</label><p>Mevcut defterlerin silinmez. Yedekteki defterler üstüne eklenir.</p><button class="btn light" onclick="backupInput.click()">Yedek dosyası seç</button><input id="backupInput" class="hidden" type="file" accept=".json,application/json" onchange="importBackup(this)"></div>
 <p id="backupMsg" class="hint"></p></div></section>
-</main><nav><button id="navShelf" onclick="goShelf()">▤<br>Kitaplık</button><button id="navNew" onclick="newBook()">＋<br>Yeni defter</button><button id="navSearch" onclick="openSearch()">⌕<br>Ara</button><button id="navSet" onclick="screen('settings')">⚙︎<br>Ayarlar</button></nav>
+</main><div id="imageViewer" aria-hidden="true" role="dialog" aria-label="Resmi yakından incele">
+ <div class="viewer-top"><span>Resmi yakınlaştırmak için iki parmağını kullan</span><button type="button" id="closeImageViewer">Kapat ✕</button></div>
+ <div class="viewer-stage" id="viewerStage"><img id="viewerImage" alt="Yakından görüntülenen resim"></div>
+ <div class="viewer-bottom"><button type="button" id="zoomOut">−</button><span id="zoomLabel">%100</span><button type="button" id="zoomIn">＋</button><button type="button" id="zoomReset">Sıfırla</button></div>
+</div>
+<nav><button id="navShelf" onclick="goShelf()">▤<br>Kitaplık</button><button id="navNew" onclick="newBook()">＋<br>Yeni defter</button><button id="navSearch" onclick="openSearch()">⌕<br>Ara</button><button id="navSet" onclick="screen('settings')">⚙︎<br>Ayarlar</button></nav>
 <script>
 const colors=['green','blue','pink','brown','navy','burgundy','cover1','cover2','cover3'],imgCovers=['cover1','cover2','cover3'],styles=['classic','minimal','antique'];let books=JSON.parse(localStorage.getItem('defterim_real_books')||'[]'),current=null,pageIndex=0,theme='green',coverStyle='classic',editTheme='green',editStyle='classic',savedRange=null;const editor=document.getElementById('editor');let selectedImage=null,dragImage=null,dragOffsetX=0,dragOffsetY=0,currentInk='#30271f',pointerDrag=null;
 const $=id=>document.getElementById(id);let activeObjectURLs=[];function persist(){try{localStorage.setItem('defterim_real_books',JSON.stringify(books));return true}catch(e){if($('saveStatus'))$('saveStatus').textContent='Kaydedilemedi: telefon depolama alanı dolu olabilir';return false}}
@@ -154,6 +173,13 @@ function openFilesDB(){return new Promise((ok,no)=>{let r=indexedDB.open('Defter
 async function putFile(file,type){let db=await openFilesDB(),id='file_'+Date.now()+'_'+Math.random().toString(36).slice(2);await new Promise((ok,no)=>{let tx=db.transaction('files','readwrite');tx.objectStore('files').put({id,file,type,name:file.name});tx.oncomplete=ok;tx.onerror=()=>no(tx.error)});db.close();return id}
 async function getFile(id){let db=await openFilesDB(),v=await new Promise((ok,no)=>{let r=db.transaction('files').objectStore('files').get(id);r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});db.close();return v}
 function insertNode(node){editor.focus();restoreSelection();let s=getSelection();if(s.rangeCount&&editor.contains(s.anchorNode)){let r=s.getRangeAt(0);r.deleteContents();r.insertNode(node);r.setStartAfter(node);r.collapse(true);s.removeAllRanges();s.addRange(r)}else editor.append(node);savedRange=s.rangeCount?s.getRangeAt(0).cloneRange():null;saveCurrentPage()}
+function addNoteBlock(){
+ const note=document.createElement('p');note.className='page-note';note.contentEditable='true';note.setAttribute('data-note-block','1');
+ editor.focus({preventScroll:true});restoreSelection();let sel=getSelection(),range;
+ if(sel&&sel.rangeCount&&editor.contains(sel.anchorNode)){range=sel.getRangeAt(0).cloneRange();range.deleteContents();}
+ else{range=document.createRange();range.selectNodeContents(editor);range.collapse(false)}
+ range.insertNode(note);const text=document.createTextNode('');note.appendChild(text);range=document.createRange();range.setStart(text,0);range.collapse(true);sel.removeAllRanges();sel.addRange(range);savedRange=range.cloneRange();saveCurrentPage();
+}
 function updateImageOverlay(){
  const ov=$('imageOverlay');if(!selectedImage||!selectedImage.isConnected){ov.classList.remove('visible');return}
  const a=selectedImage.getBoundingClientRect(),b=$('singlePage').getBoundingClientRect();
@@ -176,42 +202,105 @@ $('singlePage').addEventListener('pointerup',e=>{if(e.target.tagName==='IMG'||e.
 function resizeImage(delta){if(!selectedImage)return;let currentWidth=selectedImage.getBoundingClientRect().width||selectedImage.naturalWidth||200;let next=Math.max(60,Math.min(editor.clientWidth-4,currentWidth+delta*3));selectedImage.style.width=next+'px';selectedImage.style.height='auto';saveCurrentPage();updateImageOverlay()}
 function alignImage(where){if(!selectedImage)return;selectedImage.style.marginLeft=where==='left'?'0':'auto';selectedImage.style.marginRight=where==='right'?'0':'auto';saveCurrentPage();updateImageOverlay()}
 async function deleteSelectedImage(){if(!selectedImage)return;let id=selectedImage.dataset.fileId;selectedImage.remove();selectedImage=null;$('imageOverlay').classList.remove('visible');saveCurrentPage();if(id)await deleteFiles([id])}
-// Direct touch controls: eight edge/corner handles resize; central handle moves.
+// Touch-first image editing: the overlay owns the pointer gesture so iOS Safari
+// continues delivering move/up events even when a finger leaves a small handle.
 const imageOverlay=$('imageOverlay');
 imageOverlay.addEventListener('pointerdown',e=>{
- const handle=e.target.closest('[data-handle]');if(!handle||!selectedImage)return;const kind=handle.dataset.handle;
- if(kind==='delete'){e.preventDefault();deleteSelectedImage();return}
- const r=selectedImage.getBoundingClientRect();pointerDrag={img:selectedImage,kind,startX:e.clientX,startY:e.clientY,startW:r.width,startH:r.height,startLeft:r.left,startTop:r.top,moved:false,pointerId:e.pointerId};
- e.preventDefault();e.stopPropagation();try{handle.setPointerCapture(e.pointerId)}catch(_){ }
+ const handle=e.target.closest('[data-handle]');if(!handle||!selectedImage)return;
+ const kind=handle.dataset.handle;
+ if(kind==='delete'){e.preventDefault();e.stopPropagation();deleteSelectedImage();return}
+ if(kind==='zoom'){e.preventDefault();e.stopPropagation();openImageViewer(selectedImage);return}
+ const r=selectedImage.getBoundingClientRect();
+ pointerDrag={img:selectedImage,kind,startX:e.clientX,startY:e.clientY,startW:r.width,startH:r.height,startLeft:r.left,startTop:r.top,moved:false,pointerId:e.pointerId};
+ e.preventDefault();e.stopPropagation();
+ try{imageOverlay.setPointerCapture(e.pointerId)}catch(_){try{handle.setPointerCapture(e.pointerId)}catch(__){}}
 });
-imageOverlay.addEventListener('pointermove',e=>{
- if(!pointerDrag)return;const st=pointerDrag,dx=e.clientX-st.startX,dy=e.clientY-st.startY,k=st.kind; if(Math.abs(dx)+Math.abs(dy)>2)st.moved=true;
+function imagePointerMove(e){
+ if(!pointerDrag)return;const st=pointerDrag,dx=e.clientX-st.startX,dy=e.clientY-st.startY,k=st.kind;
+ if(Math.abs(dx)+Math.abs(dy)>2)st.moved=true;
  if(k==='move'){st.img.style.transform=`translate(${dx}px,${dy}px)`;st.img.style.opacity='.82'}
  else{
   let w=st.startW,h=st.startH;const ratio=st.startW/Math.max(1,st.startH);
   if(k.includes('e'))w=st.startW+dx;if(k.includes('w'))w=st.startW-dx;
   if(k.includes('s'))h=st.startH+dy;if(k.includes('n'))h=st.startH-dy;
-  if(['nw','ne','sw','se'].includes(k)){if(Math.abs(dx)>Math.abs(dy))h=w/ratio;else w=h*ratio}
-  w=Math.max(40,Math.min(editor.clientWidth-4,w));h=Math.max(35,Math.min(700,h));
-  st.img.style.width=w+'px';st.img.style.height=h+'px';st.img.style.maxWidth='100%';
+  if(['nw','ne','sw','se'].includes(k)){if(Math.abs(dx)>=Math.abs(dy))h=w/ratio;else w=h*ratio}
+  w=Math.max(44,Math.min(editor.clientWidth-8,w));h=Math.max(36,Math.min(900,h));
+  st.img.style.width=w+'px';st.img.style.height=h+'px';st.img.style.maxWidth='100%';st.img.style.maxHeight='none';
  }
- e.preventDefault();
-});
-imageOverlay.addEventListener('pointerup',e=>{
+ e.preventDefault();requestAnimationFrame(updateImageOverlay);
+}
+function imagePointerUp(e){
  if(!pointerDrag)return;const st=pointerDrag;pointerDrag=null;st.img.style.opacity='';
  if(st.kind==='move'){
-  st.img.style.transform='';if(st.moved){const range=caretRangeAtPoint(e.clientX,e.clientY);if(range&&editor.contains(range.startContainer)){range.deleteContents();range.insertNode(st.img)}}
+  st.img.style.transform='';
+  if(st.moved){
+   let range=caretRangeAtPoint(e.clientX,e.clientY);
+   if(!range){placeCaretAtPoint(e.clientX,e.clientY);const currentSelection=getSelection();if(currentSelection&&currentSelection.rangeCount)range=currentSelection.getRangeAt(0).cloneRange()}
+   if(range){
+    let n=range.startContainer;
+    if(n===st.img||st.img.contains(n)){range=document.createRange();range.setStartAfter(st.img);range.collapse(true)}
+    // If the drop point is in the editor, moving the existing node preserves its file id.
+    if(editor.contains(range.startContainer)){
+     const marker=st.img.nextElementSibling?.matches('[data-image-caret]')?st.img.nextElementSibling:null;
+     range.insertNode(st.img);
+     if(marker&&marker!==st.img.nextElementSibling)marker.remove();
+     ensureImageCaret(st.img);
+    }
+   }
+  }
  }
- saveCurrentPage();selectImage(st.img);updateImageOverlay();
-});
-imageOverlay.addEventListener('pointercancel',()=>{if(pointerDrag){pointerDrag.img.style.transform='';pointerDrag.img.style.opacity='';pointerDrag=null;updateImageOverlay();saveCurrentPage()}});
+ saveCurrentPage();selectImage(st.img);requestAnimationFrame(updateImageOverlay);
+}
+window.addEventListener('pointermove',imagePointerMove,{passive:false});
+window.addEventListener('pointerup',imagePointerUp);
+window.addEventListener('pointercancel',()=>{if(pointerDrag){pointerDrag.img.style.transform='';pointerDrag.img.style.opacity='';pointerDrag=null;saveCurrentPage();updateImageOverlay()}});
 window.addEventListener('resize',updateImageOverlay);$('singlePage').addEventListener('scroll',updateImageOverlay);
+function ensureImageCaret(img){
+ let marker=img.nextElementSibling;
+ if(!marker||!marker.matches('[data-image-caret]')){marker=document.createElement('span');marker.dataset.imageCaret='1';marker.textContent='\u200b';img.after(marker)}
+ return marker;
+}
+function insertImageAtSavedCaret(img){
+ editor.focus({preventScroll:true});restoreSelection();const sel=getSelection();let range;
+ if(sel&&sel.rangeCount&&editor.contains(sel.anchorNode))range=sel.getRangeAt(0);
+ else{range=document.createRange();range.selectNodeContents(editor);range.collapse(false)}
+ range.deleteContents();range.insertNode(img);const marker=ensureImageCaret(img);range=document.createRange();range.setStart(marker.firstChild,1);range.collapse(true);sel.removeAllRanges();sel.addRange(range);savedRange=range.cloneRange();saveCurrentPage();
+}
 editor.addEventListener('dragstart',e=>{if(e.target.tagName==='IMG'){dragImage=e.target;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','defterim-image')}});
 editor.addEventListener('dragover',e=>{if(dragImage){e.preventDefault();e.dataTransfer.dropEffect='move'}});
 editor.addEventListener('drop',e=>{if(!dragImage)return;e.preventDefault();let range;if(document.caretRangeFromPoint)range=document.caretRangeFromPoint(e.clientX,e.clientY);if(range&&editor.contains(range.startContainer)){range.insertNode(dragImage);saveCurrentPage()}dragImage=null});
-async function addImage(input){let f=input.files[0];input.value='';if(!f)return;try{editor.focus({preventScroll:true});restoreSelection();let id=await putFile(f,'image'),img=document.createElement('img');img.dataset.fileId=id;img.alt=f.name;img.src=URL.createObjectURL(f);activeObjectURLs.push(img.src);img.addEventListener('load',updateImageOverlay,{once:true});insertNode(img);selectImage(img)}catch(e){alert('Resim kaydedilemedi. Depolama alanını kontrol et.')} }
+async function addImage(input){let f=input.files[0];input.value='';if(!f)return;try{let id=await putFile(f,'image'),img=document.createElement('img');img.dataset.fileId=id;img.alt=f.name;img.src=URL.createObjectURL(f);activeObjectURLs.push(img.src);img.addEventListener('load',updateImageOverlay,{once:true});insertImageAtSavedCaret(img);selectImage(img)}catch(e){alert('Resim kaydedilemedi. Depolama alanını kontrol et.')} }
 async function addPDF(input){let f=input.files[0];input.value='';if(!f)return;try{let id=await putFile(f,'pdf'),a=document.createElement('a');a.className='pdf-link';a.dataset.fileId=id;a.textContent='📄 '+f.name;a.href='#';a.onclick=async e=>{e.preventDefault();let item=await getFile(id);if(item){let url=URL.createObjectURL(item.file);window.open(url,'_blank')}};insertNode(a)}catch(e){alert('PDF kaydedilemedi. Depolama alanını kontrol et.')} }
 async function restoreAttachments(){for(let node of editor.querySelectorAll('[data-file-id]')){let item=await getFile(node.dataset.fileId);if(!item)continue;let url=URL.createObjectURL(item.file);activeObjectURLs.push(url);if(node.tagName==='IMG'){node.src=url;node.addEventListener('load',updateImageOverlay,{once:true})}else{node.href=url;node.target='_blank';node.onclick=e=>{e.preventDefault();window.open(url,'_blank')}}}}
+
+// Yakından inceleme: sayfadaki görselin yerleşimini/boyutunu değiştirmeden tam ekran yakınlaştırma.
+const viewer=$('imageViewer'),viewerStage=$('viewerStage'),viewerImage=$('viewerImage');
+let viewerScale=1,viewerX=0,viewerY=0,viewerPointers=new Map(),pinchStart=null,lastTapAt=0;
+function applyViewerTransform(){viewerImage.style.transform=`translate(${viewerX}px,${viewerY}px) scale(${viewerScale})`;$('zoomLabel').textContent='%'+Math.round(viewerScale*100)}
+function resetViewerZoom(){viewerScale=1;viewerX=0;viewerY=0;applyViewerTransform()}
+function openImageViewer(img){if(!img)return;viewerImage.src=img.currentSrc||img.src;resetViewerZoom();viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeImageViewer(){viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');viewerImage.removeAttribute('src');viewerPointers.clear();pinchStart=null;document.body.style.overflow=''}
+$('closeImageViewer').addEventListener('click',closeImageViewer);
+$('zoomReset').addEventListener('click',resetViewerZoom);
+$('zoomIn').addEventListener('click',()=>{viewerScale=Math.min(5,viewerScale*1.35);applyViewerTransform()});
+$('zoomOut').addEventListener('click',()=>{viewerScale=Math.max(1,viewerScale/1.35);if(viewerScale===1){viewerX=0;viewerY=0}applyViewerTransform()});
+viewerStage.addEventListener('pointerdown',e=>{
+ viewerStage.setPointerCapture?.(e.pointerId);viewerPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ if(viewerPointers.size===2){const pts=[...viewerPointers.values()];pinchStart={distance:Math.hypot(pts[1].x-pts[0].x,pts[1].y-pts[0].y),scale:viewerScale};}
+ else if(viewerPointers.size===1){viewerStage.dataset.lastX=e.clientX;viewerStage.dataset.lastY=e.clientY;}
+ e.preventDefault();
+});
+viewerStage.addEventListener('pointermove',e=>{
+ if(!viewerPointers.has(e.pointerId))return;const old=viewerPointers.get(e.pointerId);viewerPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ if(viewerPointers.size>=2){const pts=[...viewerPointers.values()];const d=Math.hypot(pts[1].x-pts[0].x,pts[1].y-pts[0].y);if(pinchStart&&pinchStart.distance>0)viewerScale=Math.max(1,Math.min(5,pinchStart.scale*d/pinchStart.distance));}
+ else if(viewerScale>1){viewerX+=e.clientX-old.x;viewerY+=e.clientY-old.y;}
+ if(viewerScale===1){viewerX=0;viewerY=0}applyViewerTransform();e.preventDefault();
+});
+function viewerPointerEnd(e){viewerPointers.delete(e.pointerId);if(viewerPointers.size<2)pinchStart=null;}
+viewerStage.addEventListener('pointerup',viewerPointerEnd);viewerStage.addEventListener('pointercancel',viewerPointerEnd);
+viewerStage.addEventListener('click',()=>{const now=Date.now();if(now-lastTapAt<320){if(viewerScale>1)resetViewerZoom();else{viewerScale=2;applyViewerTransform()}}lastTapAt=now});
+viewer.addEventListener('click',e=>{if(e.target===viewer)closeImageViewer()});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))closeImageViewer()});
 
 function goShelf(){persist();drawShelf();screen('shelf')}
 function gotoPage(){saveCurrentPage();let n=parseInt(prompt('Hangi sayfaya gidelim? (1-'+current.pages.length+')',pageIndex+1),10);if(n>=1&&n<=current.pages.length){pageIndex=n-1;renderPage()}}
